@@ -20,8 +20,9 @@ public final class Logic {
         figures[index] = figures[index].copy(dest);
     }
 
-    private boolean free(Cell[] steps) throws OccupiedCellException {
+    private boolean free(Cell[] steps) throws OccupiedCellException, FigureNotFoundException {
         for (Figure f : figures) {
+            findBy(f.position());
           for (Cell c : steps) {
               if (f.position().equals(c)) {
                   throw new OccupiedCellException("Cell occupied by the other figure.");
